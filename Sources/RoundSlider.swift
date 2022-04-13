@@ -34,7 +34,7 @@ import SwiftUI
 ///
 /// Using iOS drawing orientation, dragging the thumb in  the positive-x or negative-y direction corresponds to an increase in
 /// the value of the created instance. Similarly, dragging the thumb in the negative-x or positive-y direction decreases the value.
-struct RoundSlider: View {
+public struct RoundSlider: View {
     // MARK: - Properties
 
     /// The selected value within bounds.
@@ -109,7 +109,7 @@ struct RoundSlider: View {
             }
     }
 
-    var body: some View {
+    public var body: some View {
         VStack(spacing: 0) {
             Text(displayTitle)
                 .fontWeight(.semibold)

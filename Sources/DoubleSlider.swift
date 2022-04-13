@@ -38,7 +38,7 @@ import SwiftUI
 ///
 ///  You can also use a step parameter to provide incremental steps along the path of the slider. For example,
 ///  if you have a slider with a range of 0 to 100, and you set the step value to 5, the slider’s increments would be 0, 5, 10, and so on.
-struct DoubleSlider: View {
+public struct DoubleSlider: View {
     // MARK: - Properties
     
     /// The value of thumb on the left-hand-side.
@@ -68,7 +68,7 @@ struct DoubleSlider: View {
     /// A callback for when editing begins and ends.
     let onEditingChanged: (Bool) -> Void
 
-    var body: some View {
+    public var body: some View {
         GeometryReader { geo in
             ZStack {
                 HStack(spacing: 0) {
