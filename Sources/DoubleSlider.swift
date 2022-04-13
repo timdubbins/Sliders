@@ -68,7 +68,7 @@ struct DoubleSlider: View {
     /// A callback for when editing begins and ends.
     let onEditingChanged: (Bool) -> Void
 
-    public var body: some View {
+    var body: some View {
         GeometryReader { geo in
             ZStack {
                 HStack(spacing: 0) {
@@ -121,7 +121,7 @@ struct DoubleSlider: View {
     /// - Parameter bounds: The range of the valid values. Defaults to 0...1.
     /// - Parameter step: The distance between each valid value.
     /// - Parameter onEditingChanged: A callback for when editing begins and ends.
-    init(
+    public init(
         lowValue: Binding<Double>,
         highValue: Binding<Double>,
         in bounds: ClosedRange<Double> = 0...1,
