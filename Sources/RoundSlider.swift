@@ -17,7 +17,7 @@ import SwiftUI
 /// when the user drags the slider.
 ///
 /// ```
-/// @State private var myValue = 0.0
+/// @State private var myValue = 30.0
 /// @State private var isEditing = false
 ///
 /// var body: some View {
