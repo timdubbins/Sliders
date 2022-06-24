@@ -58,13 +58,16 @@ public struct RoundSlider: View {
     /// A callback for when editing begins and ends.
     let onEditingChanged: (Bool) -> Void
 
-    /// The line width for the slider.
+    /// The width of the sliders track.
     let lineWidth: CGFloat
 
-    /// The length of the arc, in range [0, 1].
-    let arcFraction: CGFloat
+    /// The title font.
+    let font: Font
 
-    /// The diameter of the slider.
+    /// The length of the arc, in range [0, 1].
+    let arcLength: CGFloat
+
+    /// The diameter of the slider. Defaults to 80.
     let width: CGFloat?
 
     /// The sensitivity of the drag gesture, in range [0, 1].
@@ -113,6 +116,7 @@ public struct RoundSlider: View {
         VStack(spacing: 0) {
             Text(displayTitle)
                 .fontWeight(.semibold)
+                .font(font)
                 .foregroundColor(.secondary)
                 .padding(.bottom, lineWidth)
                 .transition(.opacity)
@@ -126,7 +130,7 @@ public struct RoundSlider: View {
                 // Track remaining to be filled.
                 Circle()
                     .inset(by: lineWidth * 0.5)
-                    .trim(from: 0, to: arcFraction)
+                    .trim(from: 0, to: arcLength)
                     .stroke(style: style)
                     .rotation(rotation)
                     .foregroundColor(.secondary)
@@ -135,7 +139,7 @@ public struct RoundSlider: View {
                 // Track filled to current value.
                 Circle()
                     .inset(by: lineWidth * 0.5)
-                    .trim(from: 0, to: arcFraction * normalValue)
+                    .trim(from: 0, to: arcLength * normalValue)
                     .stroke(style: style)
                     .rotation(rotation)
                     .foregroundColor(color)
@@ -159,7 +163,7 @@ public struct RoundSlider: View {
     /// - Parameter bounds: The range of the valid values. Defaults to 0...1.
     /// - Parameter displayBounds: The range of values to display. If nil then `bounds` is used. Defaults to nil.
     /// - Parameter lineWidth: The line width for the slider. Defaults to 8.
-    /// - Parameter arcFraction: The fractional length of the slider arc, with a value of 1 being a circle. Defaults to 0.8.
+    /// - Parameter arcLength: The fractional length of the slider arc, with a value of 1 being a circle. Defaults to 0.8.
     /// - Parameter width: The width of the slider frame. Defaults to 60.
     /// - Parameter sensitivity: The sensitivity of the drag gesture, in range [0, 1]. Defaults to 0.5.
     /// - Parameter color: The accent color for the slider. Defaults to the primary color.
@@ -170,9 +174,10 @@ public struct RoundSlider: View {
         value: Binding<Double>,
         in bounds: ClosedRange<Double>,
         displayBounds: ClosedRange<Double>? = nil,
-        lineWidth: CGFloat = 8,
-        arcFraction: CGFloat = 0.8,
-        width: CGFloat? = 60,
+        lineWidth: CGFloat = 7,
+        arcLength: CGFloat = 0.8,
+        font: Font = .body,
+        width: CGFloat = 80,
         sensitivity: Double = 0.5,
         color: Color = .primary,
         showValueOnEditing: Bool = true,
@@ -184,15 +189,16 @@ public struct RoundSlider: View {
         self.bounds = bounds
         self.displayBounds = displayBounds
         self.lineWidth = lineWidth
-        self.arcFraction = arcFraction.clamped(to: 0...1)
+        self.arcLength = arcLength.clamped(to: 0...1)
+        self.font = font
         self.width = width
-        self.sensitivity = sensitivity.clamped(to: 0...1) * 0.005 * (bounds.upperBound - bounds.lowerBound)
+        self.sensitivity = sensitivity.clamped(to: 0.05...1) * 0.005 * (bounds.upperBound - bounds.lowerBound)
         self.color = color
         self.showValueOnEditing = showValueOnEditing
         self.onEditingChanged = onEditingChanged
 
         style = StrokeStyle(lineWidth: lineWidth, lineCap: .round)
-        rotation = Angle(radians: Double(1 - arcFraction) * .pi + 0.5 * .pi)
+        rotation = Angle(radians: Double(1 - arcLength) * .pi + 0.5 * .pi)
     }
 
     private func updateValue(with translation: CGPoint) {
