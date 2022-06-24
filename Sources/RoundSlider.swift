@@ -179,7 +179,7 @@ public struct RoundSlider: View {
         font: Font = .body,
         width: CGFloat = 80,
         sensitivity: Double = 0.5,
-        color: Color = .primary,
+        color: Color = .blue,
         showValueOnEditing: Bool = true,
         onEditingChanged: @escaping (Bool) -> Void
     ) {

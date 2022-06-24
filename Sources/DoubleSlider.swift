@@ -181,15 +181,15 @@ public struct DoubleSlider: View {
     /// - Parameter step: The distance between each valid value.
     /// - Parameter onEditingChanged: A callback for when editing begins and ends.
     public init(
-        title: String? = nil,
+        _ title: String? = nil,
         lowValue: Binding<Double>,
         highValue: Binding<Double>,
-        in bounds: ClosedRange<Double> = 0...1,
+        in bounds: ClosedRange<Double>,
         displayBounds: ClosedRange<Double>? = nil,
         step: Double? = nil,
         showValues: Bool = true,
         showDifferenceOnEditing: Bool = false,
-        color: Color = .red,
+        color: Color = .blue,
         font: Font = .body,
         lineWidth: CGFloat = 7,
         onEditingChanged: @escaping (Bool) -> Void) {
