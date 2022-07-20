@@ -43,6 +43,7 @@ as the package URL.
 ```
 @State private var myValue = 30.0
 @State private var isEditing = false
+
 var body: some View {
     RoundSlider(
         "title",
