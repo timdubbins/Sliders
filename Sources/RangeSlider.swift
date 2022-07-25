@@ -1,5 +1,5 @@
 //
-//  DoubleSlider.swift
+//  RangeSlider.swift
 //  Sliders
 //
 //  Created by Timothy Dubbins on 11/04/2022.
@@ -24,7 +24,7 @@ import SwiftUI
 ///
 /// var body: some View {
 ///    VStack {
-///        DoubleSlider(
+///        RangeSlider(
 ///            lowValue: $lowValue,
 ///            highValue: $highValue,
 ///            in: 0...10) {
@@ -38,7 +38,7 @@ import SwiftUI
 ///
 ///  You can also use a step parameter to provide incremental steps along the path of the slider. For example,
 ///  if you have a slider with a range of 0 to 100, and you set the step value to 5, the slider’s increments would be 0, 5, 10, and so on.
-public struct DoubleSlider: View {
+public struct RangeSlider: View {
     // MARK: - Properties
     
     /// The value of thumb on the left-hand-side.
@@ -108,7 +108,7 @@ public struct DoubleSlider: View {
                 // We change the id parameter of the view when
                 // we change its title. This resets the views
                 // state, allowing us to animate this change.
-                    .id("DoubleSlider" + displayTitle)
+                    .id("RangeSlider" + displayTitle)
             }
             GeometryReader { geo in
                 ZStack {
