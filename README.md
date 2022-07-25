@@ -14,7 +14,7 @@ Current version: 1.0.0 [[Download](https://github.com/timdubbins/Sliders/archive
 
 A collection of custom sliders for SwiftUI. 
 - *RoundSlider* gives you a slider that acts as a dial or knob. 
-- *DoubleSlider* lets you select a range using a slider with two thumbs.
+- *RangeSlider* lets you select a range using a slider with two thumbs.
 
 ![me](https://github.com/timdubbins/demo_content/blob/master/Sliders/slider_demo.gif)
 
@@ -56,7 +56,7 @@ var body: some View {
 }
 ```
 
-### DoubleSlider
+### RangeSlider
 
 ```
 @State private var lowValue = 0.0
@@ -65,7 +65,7 @@ var body: some View {
 
 var body: some View {
     VStack {
-        DoubleSlider(
+        RangeSlider(
             lowValue: $lowValue,
             highValue: $highValue,
             in: 0...10) {
